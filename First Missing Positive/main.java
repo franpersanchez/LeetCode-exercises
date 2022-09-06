@@ -15,20 +15,16 @@ public class Main {
 }
     //Given an unsorted integer array nums, return the smallest missing positive integer.
     //You must implement an algorithm that runs in O(n) time and uses constant extra space.
- class Solution{
-//this can be resolved either with Java 8 Stream API. "Stream" coge todos los parámetros y permite añadirle atributos como
-        //filter, sort...etc.
-        //la otra forma es mediante la conversión a Set. A Set is a Collection that contains no duplicates.
-        public int firstMissingPositive(int[] nums) {
+ class Solution {
+     public int firstMissingPositive(int[] nums) {
             //creamos un Set Collection a partir del Array. Distinct para decir que no haya repetidos. boxed para pasar las
             //variables como Integer no como int. "Integer wraps a value of the primitive type int in an object".
             //toSet collector is used for collecting all Stream elements into a Set instance
             Set<Integer> setOfUniques = Arrays.stream(nums).distinct().boxed().collect(Collectors.toSet());
 
-            System.out.println(setOfUniques.toString());
-
+            
             int index=1;
-
+//we dont know the number of iterations therefore it is a "while" loop
             while(true) {
                 if(!setOfUniques.contains(index)){
                     return index;
@@ -37,5 +33,4 @@ public class Main {
             }
 
         }
-
-}
+ }
